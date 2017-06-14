@@ -3,9 +3,9 @@
   <label><?php echo $field->displayLabel(); ?></label>
   <md-select
    ng-controller="GWFSelectCtrl"
-   ng-model="data.selection"
-   ng-init="init('#gwfsel_<?php echo $field->name; ?>', '<?php echo $field->displayFormValue(); ?>')"
-   ng-change="valueSelected()">
+   ng-model="selection"
+   ng-init="selection='<?php echo $field->displayFormValue(); ?>'"
+   ng-change="valueSelected('#gwfsel_<?php echo $field->name; ?>')">
     <md-option value="0"><?php l('no_avatar'); ?></md-option>
     <?php foreach ($field->choices as $value => $gwfAvatar) : $gwfAvatar instanceof GWF_Avatar; ?>
     <md-option value="<?php echo $value; ?>">
