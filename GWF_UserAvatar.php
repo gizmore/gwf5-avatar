@@ -1,6 +1,8 @@
 <?php
 final class GWF_UserAvatar extends GDO
 {
+	public function gdoCached() { return false; }
+	
 	public function gdoColumns()
 	{
 		return array(

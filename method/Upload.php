@@ -3,7 +3,6 @@ final class Avatar_Upload extends GWF_MethodForm
 {
 	public function createForm(GWF_Form $form)
 	{
-		$form->title('form_title_avatar_upload');
 		$form->addField(GDO_File::make('avatar_image')->minfiles(1)->imageFile()->action($this->href()));
 		$form->addField(GDO_Submit::make()->label('btn_upload'));
 		$form->addField(GDO_AntiCSRF::make());
