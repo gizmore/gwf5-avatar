@@ -14,13 +14,21 @@ final class GDO_Avatar extends GDO_Select
 		$this->user = $user;
 		$this->value = GWF_Avatar::forUser($user)->getID();
 		$this->emptyChoice = t('choice_no_avatar_please');
-		$this->label('avatar');
-		return $this->choices($this->avatarChoices());
+		return $this->label('avatar');
 	}
 	
 	public function getGDOValue()
 	{
 		return GWF_Avatar::getById($this->getValue());
+	}
+	
+	public function validate($value)
+	{
+		if (!$this->choices)
+		{
+			$this->choices($this->avatarChoices());
+		}
+		return parent::validate($value);
 	}
 	
 	public function avatarChoices()
@@ -37,6 +45,10 @@ final class GDO_Avatar extends GDO_Select
 	
 	public function render()
 	{
+		if (!$this->choices)
+		{
+			$this->choices($this->avatarChoices());
+		}
 		return Module_Avatar::instance()->templatePHP('form/avatar.php', ['field'=>$this]);
 	}
 	

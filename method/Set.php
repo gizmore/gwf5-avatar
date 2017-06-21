@@ -17,7 +17,7 @@ final class Avatar_Set extends GWF_MethodForm
 	
 	public function formValidated(GWF_Form $form)
 	{
-		GWF_UserAvatar::update(GWF_User::current(), $form->getVar('avt_avatar_id'));
+		GWF_UserAvatar::updateAvatar(GWF_User::current(), $form->getVar('avt_avatar_id'));
 		return $this->message('msg_avatar_set')->add($this->renderPage());
 	}
 }

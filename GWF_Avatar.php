@@ -15,6 +15,8 @@ class GWF_Avatar extends GDO
 		);
 	}
 	
+	public function getID() { return $this->getVar('avatar_id'); }
+	
 	public static function default()
 	{
 		return self::table()->blank(['avatar_id'=>'0']);
@@ -26,13 +28,19 @@ class GWF_Avatar extends GDO
 	 */
 	public static function forUser(GWF_User $user)
 	{
-		$query = GWF_UserAvatar::table()->select();
-		$query->joinObject('avt_avatar_id')->select('gwf_file.*');
-		$query->join('JOIN gwf_file ON file_id = avatar_file_id');
-		$query->where('avt_user_id='.$user->getID())->first();
-		if (!($avatar = $query->exec()->fetchAs(self::table())))
+		if (!($avatar = $user->get('gwf_avatar')))
 		{
-			$avatar = self::default();
+			$avatarTable = self::table();
+			
+			$query = GWF_UserAvatar::table()->select();
+			$query->joinObject('avt_avatar_id')->select('gwf_file.*');
+			$query->join('JOIN gwf_file ON file_id = avatar_file_id');
+			$query->where('avt_user_id='.$user->getID())->first();
+			if (!($avatar = $query->exec()->fetchAs($avatarTable)))
+			{
+				$avatar = self::default();
+			}
+			$user->set('gwf_avatar', $avatar);
 		}
 		return $avatar;
 	}
