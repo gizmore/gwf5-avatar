@@ -41,6 +41,7 @@ class GWF_Avatar extends GDO
 				$avatar = self::default();
 			}
 			$user->tempSet('gwf_avatar', $avatar);
+			$user->recache();
 		}
 		return $avatar;
 	}
