@@ -28,7 +28,7 @@ class GWF_Avatar extends GDO
 	 */
 	public static function forUser(GWF_User $user)
 	{
-		if (!($avatar = $user->get('gwf_avatar')))
+		if (!($avatar = $user->tempGet('gwf_avatar')))
 		{
 			$avatarTable = self::table();
 			
@@ -40,7 +40,7 @@ class GWF_Avatar extends GDO
 			{
 				$avatar = self::default();
 			}
-			$user->set('gwf_avatar', $avatar);
+			$user->tempSet('gwf_avatar', $avatar);
 		}
 		return $avatar;
 	}

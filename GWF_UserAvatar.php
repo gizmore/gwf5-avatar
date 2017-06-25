@@ -14,7 +14,7 @@ final class GWF_UserAvatar extends GDO
 	
 	public static function updateAvatar(GWF_User $user, $avatarId)
 	{
-		$user->unset('gwf_avatar');
+		$user->tempUnset('gwf_avatar');
 		if ($avatarId > 0)
 		{
 			GWF_UserAvatar::blank(['avt_user_id'=>$user->getID(), 'avt_avatar_id'=>$avatarId])->replace();
