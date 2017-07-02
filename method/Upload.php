@@ -13,6 +13,7 @@ final class Avatar_Upload extends GWF_MethodForm
 	{
 		$file = GWF_File::singleFromForm($form->getVar('avatar_image'));
 		$avatar = GWF_Avatar::blank(['avatar_file_id'=>$file->getID()])->insert();
+		GWF_User::current()->tempUnset('gwf_avatar');
 		return $this->message('msg_avatar_uploaded')->add(GWF_Website::redirectMessage(href('Avatar', 'Set')));
 	}
 }
