@@ -46,10 +46,19 @@ class GWF_Avatar extends GDO
 		return $avatar;
 	}
 	
+	/**
+	 * @param GWF_User $user
+	 * @return GDO_Avatar
+	 */
 	public function getGDOAvatar(GWF_User $user)
 	{
 		static $gdoType;
 		if (!$gdoType) $gdoType = GDO_Avatar::make();
 		return $gdoType->user($user)->gdo($this);
+	}
+	
+	public static function renderAvatar(GWF_User $user)
+	{
+		return self::forUser($user)->getGDOAvatar($user)->renderCell()->getHTML();
 	}
 }
