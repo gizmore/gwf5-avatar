@@ -16,6 +16,7 @@ class GWF_Avatar extends GDO
 	}
 	
 	public function getID() { return $this->getVar('avatar_id'); }
+	public function getFileID() { return $this->getVar('avatar_file_id'); }
 	
 	public static function default()
 	{
