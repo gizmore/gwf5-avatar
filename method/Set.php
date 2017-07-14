@@ -20,4 +20,12 @@ final class Avatar_Set extends GWF_MethodForm
 		GWF_UserAvatar::updateAvatar(GWF_User::current(), $form->getVar('avt_avatar_id'));
 		return $this->message('msg_avatar_set')->add($this->renderPage());
 	}
+	
+	public function afterExecute()
+	{
+		if ($this->getForm()->validated)
+		{
+			GWF_Hook::call('AvatarSet', [GWF_User::current()->getID()]);
+		}
+	}
 }

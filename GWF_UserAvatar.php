@@ -23,5 +23,6 @@ final class GWF_UserAvatar extends GDO
 		{
 			GWF_UserAvatar::table()->deleteWhere('avt_user_id='.$user->getID())->exec();
 		}
+		$user->recache();
 	}
 }

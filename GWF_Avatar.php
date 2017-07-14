@@ -5,6 +5,7 @@
  */
 class GWF_Avatar extends GDO
 {
+	public function gdoCached() { return false; }
 	public function gdoColumns()
 	{
 		return array(
