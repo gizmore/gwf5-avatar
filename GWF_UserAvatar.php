@@ -24,5 +24,13 @@ final class GWF_UserAvatar extends GDO
 			GWF_UserAvatar::table()->deleteWhere('avt_user_id='.$user->getID())->exec();
 		}
 		$user->recache();
+		return true;
+	}
+	
+	public static function createAvatarFromString(GWF_User $user, string $contents, string $filename)
+	{
+		$file = GWF_File::fromString($filename, $contents)->copy();
+		$avatar = GWF_Avatar::blank(['avatar_file_id' => $file->getID()])->insert();
+		return self::updateAvatar($user, $avatar->getID());
 	}
 }
