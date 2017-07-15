@@ -27,7 +27,7 @@ final class GWF_UserAvatar extends GDO
 		return true;
 	}
 	
-	public static function createAvatarFromString(GWF_User $user, string $contents, string $filename)
+	public static function createAvatarFromString(GWF_User $user, string $filename, string $contents)
 	{
 		$file = GWF_File::fromString($filename, $contents)->copy();
 		$avatar = GWF_Avatar::blank(['avatar_file_id' => $file->getID()])->insert();
