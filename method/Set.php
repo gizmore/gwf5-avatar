@@ -25,7 +25,7 @@ final class Avatar_Set extends GWF_MethodForm
 	{
 		if ($this->getForm()->validated)
 		{
-			GWF_Hook::call('AvatarSet', [GWF_User::current()]);
+			GWF_Hook::call('AvatarSet', GWF_User::current());
 		}
 	}
 }
