@@ -7,15 +7,6 @@ final class Module_Avatar extends GWF_Module
 	public function onLoadLanguage() { return $this->loadLanguage('lang/avatar'); }
 	public function getClasses() { return ['GDO_Avatar','GWF_Avatar','GWF_UserAvatar']; }
 	
-	#############
-	### Hooks ###
-	#############
-	public function hookFBUserActivated(GWF_User $user, string $fbID)
-	{
-		var_dump($fbID);
-		
-	}
-	
 	##############
 	### Navbar ###
 	##############
