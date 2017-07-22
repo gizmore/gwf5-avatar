@@ -10,5 +10,5 @@ return array(
 'msg_avatar_set' => 'Your avatar image has been selected.',
 		
 'ft_avatar_upload' => '[%s] Avatar Upload',
-'msg_avatar_uploaded' => 'Your avatar image has been uploaded and could be selected by you now.',
+'msg_avatar_uploaded' => 'Your avatar image has been uploaded and selected',
 );
